@@ -56,7 +56,7 @@ public class CustomRemoteTokenService implements ResourceServerTokenServices {
     public OAuth2Authentication loadAuthentication(String accessToken) throws AuthenticationException,
             InvalidTokenException {
         HttpHeaders headers = new HttpHeaders();
-        Map<String, Object> map = executeGet("http://localhost:8095/oauth/check_token?token=" + accessToken, headers);
+        Map<String, Object> map = executeGet("http://localhost:8080/oauth/check_token?token=" + accessToken, headers);
         if (map == null || map.isEmpty() || map.get("error") != null) {
             throw new InvalidTokenException("Token not allowed");
         }
